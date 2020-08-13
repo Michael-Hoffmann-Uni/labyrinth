@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameSettingsController">
+    <GridPane AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+              AnchorPane.topAnchor="55.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        </rowConstraints>
+        <opaqueInsets>
+            <Insets/>
+        </opaqueInsets>
+        <Circle fx:id="circleBlue" fill="DODGERBLUE" onMouseClicked="#switchStatusBlue" radius="25.0"
+                stroke="BLACK" strokeType="INSIDE" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                GridPane.valignment="CENTER"/>
+        <Circle fx:id="circleGreen" fill="LIMEGREEN" onMouseClicked="#switchStatusGreen" radius="25.0"
+                stroke="BLACK" strokeType="INSIDE" GridPane.halignment="CENTER" GridPane.rowIndex="2"
+                GridPane.valignment="CENTER"/>
+        <Circle fx:id="circleYellow" fill="YELLOW" onMouseClicked="#switchStatusYellow" radius="25.0"
+                stroke="BLACK" strokeType="INSIDE" GridPane.halignment="CENTER" GridPane.rowIndex="3"
+                GridPane.valignment="CENTER"/>
+        <Circle fx:id="circleRed" fill="RED" onMouseClicked="#switchStatusRed" radius="25.0" stroke="BLACK"
+                strokeType="INSIDE" GridPane.halignment="CENTER" GridPane.rowIndex="4"
+                GridPane.valignment="CENTER"/>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Human Player?" GridPane.columnIndex="1"
+              GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Text>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name of Player / Choose AI" GridPane.columnIndex="2"
+              GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Text>
+        <ToggleButton fx:id="toggleBlue" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0"
+                      GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                      GridPane.valignment="CENTER">
+            <toggleGroup>
+                <ToggleGroup fx:id="humanPlayerToggleGroup"/>
+            </toggleGroup>
+        </ToggleButton>
+        <ToggleButton fx:id="toggleGreen" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0"
+                      toggleGroup="$humanPlayerToggleGroup" GridPane.columnIndex="1"
+                      GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER"/>
+        <ToggleButton fx:id="toggleYellow" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0"
+                      toggleGroup="$humanPlayerToggleGroup" GridPane.columnIndex="1"
+                      GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER"/>
+        <ToggleButton fx:id="toggleRed" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0"
+                      textOverrun="CLIP" toggleGroup="$humanPlayerToggleGroup" GridPane.columnIndex="1"
+                      GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER"/>
+        <TextField fx:id="nameBlue" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <GridPane.margin>
+                <Insets left="10.0" right="10.0"/>
+            </GridPane.margin>
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="nameGreen" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <GridPane.margin>
+                <Insets left="10.0" right="10.0"/>
+            </GridPane.margin>
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="nameYellow" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <GridPane.margin>
+                <Insets left="10.0" right="10.0"/>
+            </GridPane.margin>
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="nameRed" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <GridPane.margin>
+                <Insets left="10.0" right="10.0"/>
+            </GridPane.margin>
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </TextField>
+        <ChoiceBox fx:id="choiceBlue" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <GridPane.margin>
+                <Insets left="10.0" right="10.0"/>
+            </GridPane.margin>
+        </ChoiceBox>
+        <ChoiceBox fx:id="choiceGreen" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <GridPane.margin>
+                <Insets left="10.0" right="10.0"/>
+            </GridPane.margin>
+        </ChoiceBox>
+        <ChoiceBox fx:id="choiceYellow" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <GridPane.margin>
+                <Insets left="10.0" right="10.0"/>
+            </GridPane.margin>
+        </ChoiceBox>
+        <ChoiceBox fx:id="choiceRed" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <GridPane.margin>
+                <Insets left="10.0" right="10.0"/>
+            </GridPane.margin>
+        </ChoiceBox>
+        <TextFlow prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1"
+                  GridPane.rowSpan="4">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="${'1. Play with less than four players by clicking on colored circle. Reclicking circle will reactivate this player.\n'}"/>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="${'2. Select up to one human player.\n'}"/>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="${'3. Choose from available AIs in dropdown lists.\n'}"/>
+        </TextFlow>
+    </GridPane>
+    <ButtonBar buttonMinWidth="80.0" prefHeight="45.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0"
+               AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0">
+        <buttons>
+            <Button fx:id="cancelButton" cancelButton="true" maxWidth="80.0" minWidth="80.0" mnemonicParsing="false"
+                    onAction="#closeSettings" prefHeight="25.0" prefWidth="80.0" text="Cancel"/>
+            <Button fx:id="initGameButton" defaultButton="true" maxWidth="80.0" minWidth="80.0"
+                    mnemonicParsing="false" onAction="#initGame" prefHeight="25.0" prefWidth="80.0"
+                    text="Start Game!"/>
+        </buttons>
+        <padding>
+            <Insets bottom="15.0" right="15.0"/>
+        </padding>
+    </ButtonBar>
+    <Text layoutX="40.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0"
+          text="Choose playing colors, set up to one human Player and switch between available AIs"
+          AnchorPane.bottomAnchor="368.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0"
+          AnchorPane.topAnchor="15.0">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </Text>
+</AnchorPane>

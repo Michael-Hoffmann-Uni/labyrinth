@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="500.0" maxWidth="600.0" minHeight="500.0" minWidth="600.0" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label prefHeight="56.0" prefWidth="286.0" text="Database Settings" translateX="40.0">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <VBox maxHeight="50.0" minHeight="50.0" prefHeight="50.0">
+         <children>
+            <Label prefHeight="25.0" text="This application uses MySQL Connector/J Driver 5.1 of driver type 4 and supports" translateX="40.0" />
+            <Label prefHeight="25.0" text="MySQL 5.1 database servers." translateX="40.0" translateY="-5.0" />
+         </children>
+      </VBox>
+      <Label prefHeight="40.0" text="Examples:" translateX="400.0" />
+      <HBox prefHeight="229.0" prefWidth="600.0">
+         <children>
+            <GridPane prefWidth="70.0" translateX="40.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Protocol:" />
+                  <Label text="IP-Adress:" GridPane.rowIndex="1" />
+                  <Label text="Port:" GridPane.rowIndex="2" />
+                  <Label text="DB-Name:" GridPane.rowIndex="3" />
+                  <Label text="Username:" GridPane.rowIndex="4" />
+                  <Label text="Password:" GridPane.rowIndex="5" />
+               </children>
+            </GridPane>
+            <GridPane prefWidth="200.0" translateX="70.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField fx:id="txtProtocol" />
+                  <TextField fx:id="txtIPAddress" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtPort" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtDBName" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtUser" GridPane.rowIndex="4" />
+                  <PasswordField fx:id="pwdPass" GridPane.rowIndex="5" />
+               </children>
+            </GridPane>
+            <GridPane translateX="130.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="mysql" />
+                  <Label text="127.0.0.1" GridPane.rowIndex="1" />
+                  <Label text="3306" GridPane.rowIndex="2" />
+                  <Label text="laby" GridPane.rowIndex="3" />
+                  <Label GridPane.rowIndex="4" />
+                  <Label GridPane.rowIndex="5" />
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+      <VBox fx:id="vBoxWarning" maxHeight="50.0" maxWidth="380.0" prefHeight="50.0" prefWidth="380.0" style="-fx-border-style: solid inside; -fx-border-color: #c61717;" translateX="40.0" translateY="10.0">
+         <children>
+            <Label fx:id="lblConSuccess" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" text="Database connection established." textFill="#0aae0a" translateY="10.0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblWarning1" prefHeight="25.0" style="-fx-font-weight: bold" text="Unable to establish database connection with current settings." textFill="#c61717" translateX="10.0" translateY="-10.0" />
+            <Label fx:id="lblWarning2" prefHeight="25.0" text="Please enter valid information." textFill="#c61717" translateX="10.0" translateY="-10.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <HBox alignment="BOTTOM_RIGHT" prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="btnTestCon" mnemonicParsing="false" onAction="#clickTestCon" prefWidth="120.0" text="Test Connection" translateX="-320.0" />
+            <Button fx:id="btnOK" mnemonicParsing="false" onAction="#clickOK" prefWidth="60.0" text="OK" translateX="-45.0" />
+            <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#clickCancel" prefWidth="60.0" text="Cancel" translateX="-30.0" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<DialogPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/11.0.1">
+    <header>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dialogPane" text=" Das verrückte Labyrinth">
+            <font>
+                <Font size="32.0"/>
+            </font>
+        </Text>
+    </header>
+    <content>
+        <Pane id="about-text" prefHeight="200.0" prefWidth="200.0">
+            <TextFlow layoutX="10.0" prefHeight="300.0" prefWidth="580.0">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0"
+                      text="Projektarbeit im Softwarepraktikum im Sommersemester 2020 des Instituts für Informatik an der Universität Würzburg&#10;&#10;Eingereicht von&#10; - Michael Hoffmann&#10; - Jonas Merkt&#10; - Philipp Weyer&#10;&#10;unter Betreuung von Jonathan Krebs"
+                      wrappingWidth="580.0">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Text>
+            </TextFlow>
+        </Pane>
+    </content>
+</DialogPane>

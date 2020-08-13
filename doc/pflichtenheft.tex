@@ -1,0 +1,203 @@
+\documentclass[BCOR=1cm,twoside,12pt,headsepline=true,listof=numbered]{scrbook}
+	\usepackage{scrlayer-scrpage} 
+
+%Korrektur von "LaTeX-Fehlern"
+	\usepackage[tracking=true]{microtype}
+		\DeclareMicrotypeSet*[tracking]{my}% 
+			{ font = */*/*/sc/* }% 
+		\SetTracking{ encoding = *, shape = sc }{ 45 }% Kapitälchen leicht sperren!
+		
+%Zusatzpakete für deutsche Texte
+	\usepackage[ngerman]{babel}		%deutsche Textstrings statt englischer ('Beweis' statt 'proof')
+	\usepackage[latin1]{inputenc}	%Umlaute, etc.
+	
+%Dokument-Informationen:
+	\author{Philipp Weyer \and Jonas Merkt \and Michael Hoffmann}   						%mehrere Autoren werden mit \and getrennt
+	\title{Labyrinth}    		%Titel des Dokuments
+	\subject{Softwarepraktikum Sommersemester 2020}  				%Zeile über dem Titel, evtl. auskommentieren!
+	\subtitle{} %Untertitel, evtl. auskommentieren!
+	\date{\today}     						%Datum \today setzt das Datum des kompilierens ´
+
+%Zusatzpakete für mehrspaltigen Textsatz
+	\usepackage{multicol} 
+
+%Weitere Zusatzpakete und eigene Definitionen
+	\usepackage{ifthen}   
+	\let\myml\marginline
+	\renewcommand{\marginline}[1]{\myml{\sffamily\color{red}\bfseries #1}}
+	\usepackage{xspace} 					%setzt bei Bedarf ein Leerzeichen (benutzt für Trennungsangabe bzw. \dbar)
+	\usepackage{setspace} 				%ermöglicht einen mehrfachen Zeilenabstand
+	\usepackage{fancybox}					%Erweiterung der Einrahmungs-Möglichkeiten
+	\newcommand{\key}[1]{\Ovalbox{\rule[-0.18em]{0pt}{0pt}\sffamily\small #1}}
+																% Gibt ein Tastendruck-Anweisung aus. \key{STRG}+\key{S}
+	\usepackage[justification=RaggedRight, singlelinecheck=false]{caption}
+	
+
+%Zusatzpaket für Tabellen
+	\usepackage{array}			%Paket zum leichteren Erstellen von Tabellen
+	\usepackage{longtable}	%Ermöglicht das Erstellen von seitenübergreifenden Tabellen
+
+%Zusatzpaket für Grafiken
+	\usepackage{graphicx}	%Paket zum einbinden von Grafiken (Beachte: richtige Grafikformate! .eps für TeX=>PS=>PDF!)
+	\usepackage{subfig}		%Darstellung von mehreren Grafiken nebeneinander
+	\usepackage{tikz} 		%zum rendern von tikzpicture
+%	\usepackage{tikzscale}%zum skalieren von tikzpicture
+	\usetikzlibrary{trees}
+
+%Zusatzpakete für Listen
+	\usepackage{enumitem}
+
+%Zusatzpakete für farbigen Text
+	\usepackage{color}
+%Anpassungen, eigene Farb-Definitionen (jeweils Zahlenraum [0,1])
+	\definecolor{middlegray}{gray}{.4}
+	\definecolor{orange}{rgb}{1,0.64,0}
+
+%Zusatzpaket zur Erweiterung der Einrahmungsmöglichkeiten
+	\usepackage{boxedminipage}
+
+%Zusatzpaket zur Darstellung von Graphen
+	\usepackage{pgfplots}
+	\pgfplotsset{compat=1.7}
+
+%\renewcommand{\ttdefault}{pcr}
+
+%Zusatzpaket zur Darstellung von Quelltexten
+	\usepackage{listings}		%Paket zur Darstellung von Quelltexten
+	\renewcommand*{\lstlistingname}{Quellcode}
+	\lstset{basicstyle=\small\ttfamily, keywordstyle={\color{blue}\ttfamily}, stringstyle=\color{gray}\ttfamily, commentstyle=\color{middlegray}\ttfamily, showstringspaces=false, flexiblecolumns=true, tabsize=2, numbers=left, numberstyle=\small\ttfamily, stepnumber=1, numbersep=15pt, xleftmargin=32pt, captionpos=b}%, frameround=tttt, frame=trbl}		%Standard-Anpassung
+
+
+%Zusatzpakete für Mathematik
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{empheq}			%Hervorhebung von Formeln (siehe: http://mirror.ctan.org/macros/latex/contrib/mh/empheq.pdf)
+	\usepackage{marvosym}		%Mehr Zeichen (Blitze, Telefone, ...)
+
+%Automatische Mathesymbole für C,N,P,Q,R,Z
+	\newcommand{\mengensymbol}[1]{\ensuremath{\mathbb{#1}}}
+	\newcommand{\IN}{\mengensymbol{N}}
+	\def\pM{\ensuremath{\genfrac{}{}{0pt}{}{+}{\scriptstyle(\kern-1pt-\kern-1pt)}}} % Plus-Minus mit eingeklammerten Minus
+
+%Anpassungen, die nur für die Ausgabe der Codeschnipsel benötigt werden
+	\newcommand{\myref}[1]{\ref{#1} (Seite \pageref{#1})\xspace}
+	\newcommand{\menu}[1]{{\sffamily #1}}
+
+%Zusatzpaket zur Verbesserung der Zusammenarbeit (einger Pakete mit KOMA-Skript)
+	\usepackage{scrhack}		%Behebt Probleme im Umgang mit z.B. listings
+
+
+%PDF-Optionen - noch vollständig auszufüllen!
+	\usepackage[bookmarks=true,bookmarksopen=false,bookmarksnumbered=true,pdftitle={Labyrinth},pdfauthor={Philipp Weyer},plainpages=false,pdfpagelabels]{hyperref} %laut Dokumentation zuletzt zu laden!
+
+\newcommand{\mychapter}[1]{\singlespacing\chapter{#1}\doublespacing}
+\newcommand{\mychapternotoc}[1]{\singlespacing\chapter*{#1}\doublespacing}
+
+%%% BEDING TeXDoclet!
+\newcommand{\entityintro}[3]{%
+  \hbox to \hsize{%
+    \vbox{%
+      \hbox to .2in{}%
+    }%
+    {\bf  #1}%
+    \dotfill\pageref{#2}%
+  }
+	
+  \makebox[\hsize]{%
+    \parbox{.4in}{}%
+    \parbox[l]{5in}{%
+      \vspace{1mm}%
+      #3%
+      \vspace{1mm}%
+    }%
+  }%
+}
+\newcommand{\refdefined}[1]{
+\expandafter\ifx\csname r@#1\endcsname\relax
+\relax\else
+{$($in \ref{#1}, page \pageref{#1}$)$}\fi}
+%%% END TeXDoclet!
+
+\newcommand{\name}[1]{\textsc{#1}}
+
+\begin{document}
+\setlength{\cornersize*}{6pt}
+
+
+%Beginn Titelseite
+\pagenumbering{alph}
+\maketitle
+
+
+
+%Beginn Inhaltsverzeichnis
+\newpage\pagenumbering{Roman}
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+
+\parindent 0pt	%sorgt dafür, dass im gesamten Dokument keine Einzüge mehr dargestellt werden (ausser manuelle)
+
+\pagestyle{scrheadings}
+\ihead{\headmark}
+\ohead{}
+\chead{}
+\ifoot{} 
+\cfoot{}
+\ofoot{\thepage}
+\setkomafont{pageheadfoot}{\normalfont\sffamily\bfseries}
+\setkomafont{pagenumber}{\normalfont\sffamily\bfseries}
+
+
+
+
+%BEGINN DES INHALTS
+
+\mychapter{Pflichtenheft\label{sec:Pflichtenheft}}
+
+\section{Zielbestimmung\label{sec:Zielbestimmung}}
+\subsection{MUSS-Kriterien\label{sec:MUSSKriterien}}
+\begin{enumerate}
+	\item Die Regeln des Spiels "`Das verrückte Labyrinth"' werden gemäß der offiziellen Anleitung\footnote{\url{https://www.ravensburger.de/spielanleitungen/ecm/Spielanleitungen/26446\%20anl\%201637944.pdf?ossl=pds_text_Spielanleitung}} implementiert, wobei nur die Grundvariante die relevante Regelgrundlage darstellt.
+	
+	In Abweichung zur Anleitung beginnt ein zufälliger Spieler.
+	\item Das Spiel wird mit grafischer Benutzerschnittstelle implementiert, sodass der menschliche Spiele ein dem gewohnten Spiel ähnliches Spielfeld steuert.
+	\item Je Spielrunde kann maximal ein menschlicher Spieler teilnehmen, die anderen Spieler werden von KIs gesteuert.
+	\item Das Spiel ermöglicht einen Simulationsmodus ohne menschliche Mitspieler, in dem zwei bis vier Spieler von (verschiedenen) KIs gesteuert werden. Dieser Modus kann sowohl mit als auch ohne grafische Anzeige des Spielverlaufs ablaufen. Endlos-Spiele\footnote{Treffen hinreichend "`dumme"' KIs aufeinander sind ergebnislose Spielverläufe denkbar -- diese werden durch zeitliches Limit oder andere geeignete Kriterien beendet und nicht gewertet.} werden durch geeignete Kriterien beendet.
+	\item Die KIs liegen zur Kompilierzeit vor und steuern über eine geeignete Schnittstelle das Spielgeschehen, wenn der von ihr vertretene Spieler an der Reihe ist. Über die Schnittstelle steht der bisherige Spielverlauf zur Verfügung.
+	\item Eine spielfähige KI wird implementiert; die Züge der KI basieren auf dem zum Zeitpunkt des Zuges aktuellen Spielfeldsituation und betrachtet mögliche zukünftige Züge nicht.
+	\item Die Spielergebnisse vollständig abgeschlossener Spielrunden werden in eine SQL-Datenbank geschrieben; aus den Einträgen ist ersichtlich
+			\begin{enumerate}
+				\item welche Spieler/KIs an dem Spiel teilgenommen haben und
+				\item welcher Spieler siegreich war.
+			\end{enumerate}
+	\item Aus der Datenbank können statistische Informationen gewonnen werden, welche grafisch aufbereitet und menschlich lesbar angezeigt werden.
+	\item Die Umsetzung des Projekts erfolgt mit Java, der Code wird per Git verwaltet.
+\end{enumerate}
+
+\subsection{KANN-Kriterien\label{sec:KANNKriterien}}
+\begin{enumerate}
+	\item Der vollständige Spielverlauf wird in der Datenbank gespeichert.
+	\item Die grafische Anzeige des Spiels erfolgt mit fotorealistischen Darstellungen.
+	\item Menschliche Spieler an einem PC können namentlich unterschieden werden.
+	\item Spielvarianten, die über Menü-Einstellungen ausgewählt werden können:
+		\begin{enumerate}
+			\item Die Spielvariante für Kinder nach offizieller Anleitung wird implementiert.
+			\item Die Variante des "`Labyrinth der Meister"' wird implementiert.
+			\item Trainingsmodus: der menschliche Spieler erhält optische Unterstützung für seine möglichen Züge.
+		\end{enumerate}
+	\item Es werden verschiedene KIs implementiert.
+\end{enumerate}
+
+
+\subsection{Abgrenzung\label{sec:Abgrenzung}}
+\begin{enumerate}
+	\item Das Spiel bietet keinen menschlich steuerbaren Mehrspieler-Modus, weder über Netzwerk noch am gleichen Endgerät.
+	\item Abgebrochene Spielrunden können weder gespeichert noch fortgesetzt werden.
+\end{enumerate}
+
+
+
+
+\end{document}
